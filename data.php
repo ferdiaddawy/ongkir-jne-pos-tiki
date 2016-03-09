@@ -11,30 +11,47 @@ if ($page == 'cari-kota')
 	echo'<option value="0">Pilih Kota</option>';
 	while ($rowkota = $kota->fetch(PDO::FETCH_ASSOC)) {
 	    
-	    echo'<option value="'.$rowkota['id'].'">'.$rowkota['nama'].'</option>';
+	    echo'<option value="'.$rowkota['kota_id'].'">'.$rowkota['kota'].'</option>';
 	}
 }
 
-if ($page == 'cari-kecamatan')
+if ($page == 'jenis-kurir')
 {
 	$id = $_POST['id'];
-	$kota = $db->query("SELECT * FROM tbl_kecamatan WHERE kota_id = '$id'");
-	echo'<option value="0">Pilih Kecamatan</option>';
-	while ($rowkota = $kota->fetch(PDO::FETCH_ASSOC)) {
-	    
-	    echo'<option value="'.$rowkota['id'].'">'.$rowkota['nama'].'</option>';
+
+	if ($id == 'jne')
+	{
+		echo'<option value="OKE">OKE</option>';
+		echo'<option value="REG">REG</option>';
+	} else if  ($id == 'pos')
+	{
+		echo'<option value="KILAT">KILAT</option>';
+		echo'<option value="EKSPRESS">EKSPRESS</option>';
+	} else if  ($id == 'tiki')
+	{
+		echo'<option value="ECO">ECO</option>';
+		echo'<option value="REG">REG</option>';
+		echo'<option value="ONS">ONS</option>';
+	} else
+	{
+		echo'<option value=""></option>';
 	}
 }
 
-if ($page == 'cari-kelurahan')
+if ($page == 'ongkir')
 {
-	$id = $_POST['id'];
-	$kota = $db->query("SELECT * FROM tbl_kelurahan WHERE kecamatan_id = '$id'");
-	echo'<option value="0">Pilih Kelurahan</option>';
-	while ($rowkota = $kota->fetch(PDO::FETCH_ASSOC)) {
+	$kota  = $_POST['kota'];
+	$jenis = $_POST['jenis'];
+	$kurir = $_POST['kurir'];
+	$pengirim = $_POST['pengirim'];
+
+	$ongkir = $db->query("SELECT * FROM tbl_harga WHERE hrg_kota = '$pengirim' AND hrg_kota_tujuan = '$kota' AND hrg_kurir = '$kurir' AND hrg_jenis = '$jenis' ");
+	$data = $ongkir->fetch(PDO::FETCH_ASSOC);
 	    
-	    echo'<option value="'.$rowkota['id'].'">'.$rowkota['nama'].'</option>';
-	}
+	echo $data['hrg_jumlah'];
+
 }
+
+
 
 ?>

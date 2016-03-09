@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bootstrap 3, from LayoutIt!</title>
+    <title>Data Ongkir 2016</title>
 
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
@@ -32,14 +32,16 @@
 			</nav>
     </div>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-4">
+			
+		</div>
+		<div class="col-md-4">
 			<h2>
-				Data Wilayah Indonesia
+				Data Ongkos Kirim 2016
 			</h2>
-			<p>
-				Data ini diambil dari situs Pemutakhiran MFD dan MBS Badan Pusat Statistik (http://mfdonline.bps.go.id/) pada 17 Februari 2016.
-			</p>
-
+		</div>
+		<div class="col-md-4">
+			
 		</div>
 	</div>
 
@@ -51,6 +53,16 @@
 						<div class="form-group">
 							 
 							<label for="exampleInputEmail1">
+								Kota
+							</label>
+							<select  name="pengirim" class="form-control pengirim" id="pengirim">
+								<option value="55">Bekasi</option>
+								<option value="152">Jakarta Pusat</option>
+							</select>
+						</div>
+						<div class="form-group">
+							 
+							<label for="exampleInputEmail1">
 								Provinsi
 							</label>
 							<select  name="provinsi" class="form-control provinsi" id="provinsi">
@@ -58,7 +70,7 @@
 							$prov = $db->query("SELECT * FROM tbl_provinsi");
 							echo'<option>Pilih Provinsi</option>';
 							while ($dataprov = $prov->fetch(PDO::FETCH_ASSOC)) {
-							echo'<option value="'.$dataprov['id'].'">'.$dataprov['nama'].'</option>';
+							echo'<option value="'.$dataprov['provinsi_id'].'">'.$dataprov['provinsi'].'</option>';
 							}
 							?>
 							</select>
@@ -66,7 +78,7 @@
 						<div class="form-group">
 							 
 							<label for="exampleInputEmail1">
-								Kota
+								Kota Tujuan
 							</label>
 							<select  name="kota" class="form-control kota" id="kota">
 							</select>
@@ -74,24 +86,30 @@
 						<div class="form-group">
 							 
 							<label for="exampleInputEmail1">
-								Kecamatan
+								Kurir
 							</label>
-							<select name="kecamatan" class="form-control kecamatan" id="kecamatan">
+							<select name="kurir" class="form-control kurir" id="kurir">
+									<option value="">Pilih Ekspedisi</option>
+									<option value="jne">JNE</option>
+									<option value="pos">POS</option>
+									<option value="tiki">TIKI</option>
 							</select>
 						</div>
 						<div class="form-group">
 							 
 							<label for="exampleInputEmail1">
-								Kelurahan
+								Jenis
 							</label>
-							<select name="kelurahan" class="form-control kelurahan" id="kelurahan">
+							<select name="jenis" class="form-control jenis" id="jenis">
 							</select>
 						</div>
-
-						
-						<button type="submit" class="btn btn-default">
-							Submit
-						</button>
+						<div class="form-group">
+						 
+						<label for="exampleInputEmail1">
+							Harga Ongkir
+						</label>
+						<input  type="text" name="ongkir" id="ongkir" class="form-control ongkir">
+						</div>
 					</form>
 				</div>
 				<div class="col-md-4">
